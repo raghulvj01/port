@@ -1,0 +1,23 @@
+apiVersion: datadoghq.com/v2alpha1
+kind: DatadogAgent
+metadata:
+  name: datadog
+spec:
+  global:
+    credentials:
+      apiSecret:
+        secretName: datadog-secret
+        keyName: api-key
+  features:
+    apm:
+      instrumentation:
+        enabled: true
+        libVersions:
+          java: v1
+          dotnet: v2
+          python: v2
+          js: v5
+          ruby: v2
+    logCollection:
+      enabled: true
+      containerCollectAll: true
